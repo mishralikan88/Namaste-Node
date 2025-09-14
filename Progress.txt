@@ -8,6 +8,68 @@ Season 2 and
 
 last 3 videos - Not devtinder
 
+ep8- (make these note)
+
+
+
+schema validation -
+
+required
+unique
+type
+defau
+lowwercase-checks before validation
+regexlt
+trim
+upper case checks
+ min max length
+mibn max case
+enum 
+custom validator fn
+[type] 
+timestamp true - created at ,update at both ll be shown
+
+
+API level validation -
+sanitising he data before entering database from api side - pdf
+
+data sanitisation refre pdf 
+validator pachage helper functions - 
+isurl
+isstrongpassword
+isemail
+never trust req,bodt because user can put asntrhung in post get and other calls compromising the data..
+we should do validatiin before wesave dat ai ndb we sjoyuld od sanity testing of thedata and alsoapu levele data  laiudtaion.
+
+EP9-
+
+validation.js code explanation and the usage
+bcrypt(pdf)
+>>>>
+
+Ep 10 -
+until and unlessy oiu log in you cannot add request to profile ..youi annnot send frind request to other person , you cannot review equest ..soo the ke ything is user has to be authenticcated before he  raisies further requetsst o other pages.
+
+for every action opf tghe user- (requesting profile page,sening friend request) for every api call  , the server has to authineticate whether request is coming from teh same user
+on successful login serverbwill send a jwt token to the clirent 
+
+how jwt works ? via cookie 
+
+14.04 >> Image explanation
+
+summary -
+
+when a user logs in server will cretae a jwt token for that user attach it to the cookie and then sent back..bow thge cookies is stored by the browser .Any requests coming up next , that cookie will be send along to teh server 
+and when the cookeis will be sent along we will vakidatte once again in the srever  and then will do anything that i wanna do with the application..
+
+coding till 58.2
+Auth middleware
+cookkie and jwt expiry
+ mongoode schema methods
+
+ep 12 - 
+
+
 Season 3 -  - 
 
 Watch complete
