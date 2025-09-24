@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       lowercase: true,
       required: true,
-      unique: true,
+      unique: true, // unique id for Email
       trim: true,
       validate(value) {
         if (!validator.isEmail(value)) {
@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
       trim: true,
-      validate(value) {
+      validate(value) { // We can use enum alternatively for validation check without the need of validate function. 
         if (!["male", "female", "others","Male", "Female", "Others"].includes(value)) {
           throw new Error("Not a valid gender (Male , Female and other)");
         }
@@ -103,3 +103,35 @@ userSchema.methods.validatePassword = async function (passwordInputByUser) {
 
 mongoose.model("User", userSchema);
 module.exports = mongoose.model("User", userSchema);
+
+
+// 🍫 Imagine you’re in a chocolate shop
+
+// You want to find a chocolate by flavor (e.g., "Mango").
+
+// The shopkeeper arranges chocolates in alphabetical order of flavors.
+// 👉 That’s like a single-field index on flavor.
+
+// 🍫 Now imagine you want chocolates by flavor + size
+
+// You want "Mango" chocolates in Large size.
+
+// If the shopkeeper only sorted by flavor, he’d have to search through all mango chocolates to find the large ones.
+
+// But if the chocolates are sorted by flavor first, then size inside each flavor,
+// 👉 The shopkeeper can find Mango → Large super fast.
+
+// That’s a compound index → it sorts and organizes two fields together.
+
+// 🔹 In MongoDB terms
+
+// Single index → { flavor: 1 }
+
+// Compound index → { flavor: 1, size: 1 }
+
+// 👉 This makes queries like:
+
+// db.chocolates.find({ flavor: "Mango", size: "Large" })
+
+
+// very fast 🚀

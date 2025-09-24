@@ -115,5 +115,40 @@ Today's learning covers advanced concepts in MongoDB and Mongoose, including cre
 
 ---
 
+
+
+What enum does
+
+In a Mongoose schema, enum restricts a field’s value to only a fixed set of strings (or numbers).
+
+If you try to save a document with a value outside this set, Mongoose will throw a ValidationError.
+
+🔹 Example
+const userSchema = new mongoose.Schema({
+  status: {
+    type: String,
+    required: true,
+    enum: {
+      values: ["ignored", "accepted", "rejected", "interested"],
+      message: "{VALUE} is not a valid status type"
+    }
+  }
+});
+
+🔹 Key Points
+
+✅ Restriction – only values listed in values are allowed.
+Example: "accepted" ✅, "pending" ❌ → will throw error.
+
+✅ Error Message – the {VALUE} placeholder in the message is replaced by the actual wrong value you tried to save.
+Example:
+
+new User({ status: "pending" }).save();
+
+
+Error:
+
+ValidationError: pending is not a valid status type
+
 ## Conclusion
 These enhancements improve the robustness of the DevTinder app by ensuring data integrity and adding meaningful validations. The use of enums, compound validations, and middleware demonstrates effective use of Mongoose and MongoDB features for scalable application development.
